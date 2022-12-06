@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>NGUYEN HIEN ELECTRONIC</title>
+
+
+  <!-- include Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-app.js"></script>
+
+  <!-- include only the Firebase features as you need -->
+  <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-database.js"></script>
+
+  <script>
+    // Replace with your app config object
+    // Import the functions you need from the SDKs you need
+    //import { initializeApp } from "firebase/app";
+    //import { getAnalytics } from "firebase/analytics";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyBjRrMN1gJS1zkFq6jWCRoSwwa2ARvm7i0",
+      authDomain: "database1-esp32.firebaseapp.com",
+      databaseURL: "https://database1-esp32-default-rtdb.firebaseio.com",
+      projectId: "database1-esp32",
+      storageBucket: "database1-esp32.appspot.com",
+      messagingSenderId: "1047553062697",
+      appId: "1:1047553062697:web:18070c9eb86ef9391de938",
+      measurementId: "G-VZXVGMEC7G"
+    };
+
+    // Initialize Firebase
+
+    // Initialize firebase
+    firebase.initializeApp(firebaseConfig);
+
+    // Make auth and database references
+    const auth = firebase.auth();
+    const db = firebase.database();
+
+  </script>
+
+  <!-- include highchartsjs to build the charts-->
+  <script src="https://code.highcharts.com/highcharts.js"></script>
+  <!-- include to use jquery-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <!--include icons from fontawesome-->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+    integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+  <!-- include Gauges Javascript library-->
+  <script src="https://cdn.rawgit.com/Mikhus/canvas-gauges/gh-pages/download/2.1.7/all/gauge.min.js"></script>
+  <!--reference for favicon-->
+  <link rel="icon" type="image/png" href="favicon.png">
+  <!--reference a stylesheet-->
+  <link rel="stylesheet" type="text/css" href="style.css">
+
+</head>
+
+<body>
+  <!--TOP BAR-->
+  <div class="topnav">
+    <h1>NGUYEN HIEN ELECTRONIC <i class="fas fa-clipboard-list"></i></h1>
+  </div>
+
+  <!--AUTHENTICATION BAR (USER DETAILS/LOGOUT BUTTON)-->
+  <div id="authentication-bar" style="display: none;">
+    <p><span id="authentication-status">User logged in</span>
+      <span id="user-details">USEREMAIL</span>
+      <a href="/" id="logout-link">(logout)</a>
+    </p>
+  </div>
+
+  <!--LOGIN FORM-->
+  <form id="login-form" style="display: none;">
+    <div class="form-elements-container">
+      <label for="input-email"><b>Email</b></label>
+      <input type="text" placeholder="Enter Username" id="input-email" required>
+
+      <label for="input-password"><b>Password</b></label>
+      <input type="password" placeholder="Enter Password" id="input-password" required>
+
+      <button type="submit" id="login-button">Login</button>
+      <p id="error-message" style="color:red;"></p>
+    </div>
+  </form>
+
+  <!--BUTTONS TO HANDLE DATA-->
+  <div class="buttion-view">
+    <!--View data button-->
+    <button id="view-data-button">View all data</button>
+  </div>
+
+  <form id="staffdata" style="display: none;">
+    <input type="text" placeholder="Enter month" id="input-month" required>
+    <input type="text" placeholder="Enter name staff" id="input-namestaff" required>
+    <button id="view-staff">View Staff data</button>
+
+  </form>
+
+  <!--TABLE WITH ALL DATA-->
+  <div class="cards">
+    <div class="card" id="table-container" style="display:none;">
+      <table id="readings-table">
+        <tr id="theader">
+          <th>Name</th>
+          <th>Date in</th>
+          <th>Time in</th>
+        </tr>
+        <tbody id="tbody">
+        </tbody>
+      </table>
+      <p><button id="load-data" style="display:none;">More results...</button></p>
+    </div>
+  </div>
+
+  <!--TABLE WITH STAFF DATA-->
+  <div class="cards">
+    <div class="card" id="table-staff-data" style="display:none;">
+      <table id="readings-table">
+        <tr id="theader">
+          <th>Name</th>
+          <th>Work</th>
+        </tr>
+        <tr>
+          <th>
+            <tbody id="namestaff"></tbody>
+          </th>
+          <th>
+            <tbody id="countwork"></tbody>
+          </th>
+        </tr>
+        <tr id="theader">
+          <th>Name</th>
+          <th>Date in</th>
+          <th>Time in</th>
+          <th>Status</th>
+        </tr>
+        <tbody id="datastaff">
+        </tbody>
+      </table>
+      <p><button id="load-data" style="display:none;">More results...</button></p>
+    </div>
+  </div>
+
+
+
+  <script src="scripts/auth.js"></script>
+  <script src="scripts/index.js"></script>
+  <script src="scripts/staffdata.js"></script>
+
+</body>
+
+</html>
