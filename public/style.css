@@ -2,30 +2,40 @@ html {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     display: inline-block;
     text-align: center;
+    background-color: white;
 }
 
 body {
     margin: 0;
     width: 100%;
     text-align: center;
+    background-color: rgb(147, 190, 178);
 }
 
 .topnav {
     overflow: hidden;
-    background-color: #049faa;
+    background-color: rgb(121, 163, 153);
     color: white;
     font-size: 1rem;
-    padding: 5px;
 }
 
+.link-shop{
+    color: white;
+    background-color: #1282A2;
+    margin: auto;
+    padding: 20px;
+    border-radius: 20px;
+    border: px solid #1282A2;
+}
 #authentication-bar {
-    background-color: mintcream;
+    background-color:rgb(209, 226, 238);
     padding-top: 10px;
     padding-bottom: 10px;
+    color: black;
 }
 
 #user-details {
-    color: cadetblue;
+    color: black;
 }
 
 .content {
@@ -59,11 +69,11 @@ body {
 button {
     background-color: #049faa;
     color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
     border: none;
     cursor: pointer;
-    border-radius: 4px;
+    border-radius: 10px;
+    padding: 15px 30px;
+    margin: 10px auto 5px auto;
 }
 
 button:hover {

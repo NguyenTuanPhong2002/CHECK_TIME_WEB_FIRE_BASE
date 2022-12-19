@@ -40,9 +40,10 @@ const setupUI = (user) => {
         authBarElement.style.display = 'block';
         userDetailsElement.style.display = 'block';
         userDetailsElement.innerHTML = user.email;
-        viewDataButtonElement.style.display = 'block';
+        viewDataButtonElement.style.display = 'none';
         viewStaffButton.style.display = 'block';
         staffForm.style.display = 'block';
+        tableContainerElement.style.display = 'block';
         // IF USER IS LOGGED OUT
 
         var uid = user.uid;// get user UID to get data from database
@@ -71,7 +72,7 @@ const setupUI = (user) => {
         function createTable() {
             // append all data to the table
             var firstRun = true;
-            dbRef.orderByKey().limitToLast(100).on('child_added', function (snapshot) {
+            dbRef.orderByKey().limitToLast(2000).on('child_added', function (snapshot) {
                 if (snapshot.exists()) {
                     var jsonData = snapshot.toJSON();
                     console.log(jsonData);
@@ -102,7 +103,7 @@ const setupUI = (user) => {
             // append all data to the table
             var firstRun = true;
             var count = 0;
-            dbRef.orderByKey().limitToLast(100).on('child_added', function (snapshot) {
+            dbRef.orderByKey().limitToLast(2000).on('child_added', function (snapshot) {
                 if (snapshot.exists()) {
                     var jsonData = snapshot.toJSON();
                     console.log(jsonData);
@@ -147,16 +148,9 @@ const setupUI = (user) => {
 
 
 
-        viewDataButtonElement.addEventListener('click', (e) => {
-            // Toggle DOM elements
-            //$('#tbody').remove();
-            //$('#tbody').detach();
-            tableContainerElement.style.display = 'block';
-            viewDataButtonElement.style.display = 'none';
-            viewStaffButton.style.display = 'none';
-            staffForm.style.display = 'none';
-            createTable();
-        });
+
+        createTable();
+
 
         staffForm.addEventListener('submit', (e) => {
             e.preventDefault();
